@@ -11,16 +11,15 @@ import javax.swing.event.DocumentListener;
 import javax.swing.JOptionPane;
 public class OrderJFrame extends javax.swing.JFrame {
     private String selectedItemName = "";
+    
     private String selectedItemPrice = "";
+    
 
     /**
      * Creates new form OrderJFrame
      */
     public OrderJFrame() {
     initComponents();
-    
-    
-
     // Set up table columns
     DefaultTableModel model = new DefaultTableModel(
         new Object[][]{},
@@ -31,7 +30,6 @@ public class OrderJFrame extends javax.swing.JFrame {
             "Status"
         }
     );
-
     jTable1.setModel(model);
 
     // Automatically update table when user types

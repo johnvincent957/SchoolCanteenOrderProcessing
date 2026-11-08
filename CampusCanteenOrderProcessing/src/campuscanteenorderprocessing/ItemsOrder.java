@@ -169,15 +169,10 @@ private int[] itemStock = {
     }
 
     String itemName = jTable1.getValueAt(selectedRow, 1).toString();
-
     String price = jTable1.getValueAt(selectedRow, 3).toString();
-
     OrderJFrame order = new OrderJFrame();
-
     order.setOrderDetails(itemName, price);
-
     order.setVisible(true);
-
     this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
