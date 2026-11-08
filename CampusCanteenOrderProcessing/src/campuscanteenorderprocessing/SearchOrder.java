@@ -114,6 +114,7 @@ model.addRow(new Object[]{"025", "Cupcake", "Desserts", 25.00});
     }
     
     private void searchItems() {
+        
 
     String keyword = jTextField1.getText().trim();
 
@@ -133,6 +134,8 @@ model.addRow(new Object[]{"025", "Cupcake", "Desserts", 25.00});
             "No matching item found!",
             "Search Result",
             javax.swing.JOptionPane.INFORMATION_MESSAGE
+                
+                
         );
     }
     }
