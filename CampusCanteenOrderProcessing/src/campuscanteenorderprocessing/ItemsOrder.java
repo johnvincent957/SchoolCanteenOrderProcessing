@@ -178,6 +178,7 @@ private int[] itemStock = {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
     int selectedRow = jTable1.getSelectedRow();
+    
 
     if (selectedRow == -1) {
         JOptionPane.showMessageDialog(
