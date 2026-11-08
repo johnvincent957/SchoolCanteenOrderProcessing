@@ -127,21 +127,15 @@ model.addRow(new Object[]{"025", "Cupcake", "Desserts", 25.00});
             )
         );
     }
-
     if (jTable1.getRowCount() == 0) {
         javax.swing.JOptionPane.showMessageDialog(
             this,
             "No matching item found!",
             "Search Result",
-            javax.swing.JOptionPane.INFORMATION_MESSAGE
-                
-                
+            javax.swing.JOptionPane.INFORMATION_MESSAGE           
         );
     }
     }
-
-
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
