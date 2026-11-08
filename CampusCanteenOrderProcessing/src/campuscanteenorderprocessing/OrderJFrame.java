@@ -56,7 +56,6 @@ public class OrderJFrame extends javax.swing.JFrame {
         jLabel9.setText("Order Number :");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 230, 20));
 
-        jTextField2.setText("Enter Item");
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
@@ -64,7 +63,6 @@ public class OrderJFrame extends javax.swing.JFrame {
         });
         getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 720, -1));
 
-        jTextField3.setText("Enter Customer Name");
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
@@ -72,7 +70,6 @@ public class OrderJFrame extends javax.swing.JFrame {
         });
         getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 720, -1));
 
-        jTextField5.setText("Enter Order Number");
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
@@ -119,7 +116,17 @@ public class OrderJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+    String customerName = jTextField3.getText();
+    String orderNumber = jTextField5.getText();
+    String orderItem = jTextField2.getText();
+
+    OrderQueueJFrame queue = new OrderQueueJFrame();
+
+    queue.addOrder(orderNumber, customerName, orderItem);
+
+    queue.setVisible(true);
+
+    this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
