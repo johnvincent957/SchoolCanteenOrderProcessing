@@ -103,6 +103,11 @@ public class MenuJFrame extends javax.swing.JFrame {
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton5.setForeground(new java.awt.Color(0, 51, 51));
         jButton5.setText("DISPLAY PENDING ORDER");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, 370, 110));
 
         jButton4.setBackground(new java.awt.Color(204, 102, 0));
@@ -136,6 +141,13 @@ public class MenuJFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    OrderQueueJFrame orderQueue = new OrderQueueJFrame();
+    orderQueue.setVisible(true);
+
+    this.dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     
     public static void main(String args[]) {
