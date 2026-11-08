@@ -88,18 +88,19 @@ public class OrderJFrame extends javax.swing.JFrame {
 }
     private void updateOrderPreview() {
 
+    String orderNumber = jTextField5.getText().trim();
     String customerName = jTextField3.getText().trim();
     String orderItem = jTextField2.getText().trim();
-    String orderNumber = jTextField5.getText().trim();
 
     DefaultTableModel model =
         (DefaultTableModel) jTable1.getModel();
 
     model.setRowCount(0);
 
-    if (!customerName.isEmpty()
-            || !orderItem.isEmpty()
-            || !orderNumber.isEmpty()) {
+    // Display the order information
+    if (!orderNumber.isEmpty()
+            || !customerName.isEmpty()
+            || !orderItem.isEmpty()) {
 
         model.addRow(new Object[]{
             orderNumber,
@@ -147,7 +148,7 @@ public class OrderJFrame extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel5.setText("Order Item :");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 230, 20));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 230, 20));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setText("ORDER INFORMATION");
@@ -155,32 +156,32 @@ public class OrderJFrame extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel8.setText("Order Customer Name :");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 230, 20));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 230, 20));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel9.setText("Order Number :");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 230, 20));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 230, 20));
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 720, -1));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 720, -1));
 
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 720, -1));
+        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 720, -1));
 
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 720, -1));
+        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 720, -1));
 
         jButton1.setText("Return");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -262,9 +263,10 @@ public class OrderJFrame extends javax.swing.JFrame {
     OrderQueueJFrame queue = new OrderQueueJFrame();
 
     queue.addOrder(
-        orderNumber,
-        customerName,
-        orderItem
+    orderNumber,
+    customerName,
+    orderItem,
+    selectedItemPrice
     );
 
     // Display confirmation message
@@ -334,9 +336,10 @@ public class OrderJFrame extends javax.swing.JFrame {
     OrderQueueJFrame queue = new OrderQueueJFrame();
 
     queue.addOrder(
-        orderNumber,
-        customerName,
-        orderItem
+    orderNumber,
+    customerName,
+    orderItem,
+    selectedItemPrice
     );
 
     JOptionPane.showMessageDialog(
