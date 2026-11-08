@@ -9,6 +9,10 @@ package campuscanteenorderprocessing;
  * @author JV gwapo
  */
 public class SearchOrder extends javax.swing.JFrame {
+    private String selectedItemName = "";
+private String selectedItemPrice = "";
+private String selectedItemID = "";
+private String selectedItemCategory = "";
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(SearchOrder.class.getName());
 
@@ -27,6 +31,7 @@ public class SearchOrder extends javax.swing.JFrame {
     // Press Enter to search
     jTextField1.addActionListener(e -> searchItems());
     }
+    
 
     private void selectItem() {
 
@@ -42,22 +47,20 @@ public class SearchOrder extends javax.swing.JFrame {
 
     int row = jTable1.convertRowIndexToModel(selectedRow);
 
-    String itemID = model.getValueAt(row, 0).toString();
-    String itemName = model.getValueAt(row, 1).toString();
-    String category = model.getValueAt(row, 2).toString();
-    String price = model.getValueAt(row, 3).toString();
+    selectedItemID = model.getValueAt(row, 0).toString();
+    selectedItemName = model.getValueAt(row, 1).toString();
+    selectedItemCategory = model.getValueAt(row, 2).toString();
+    selectedItemPrice = model.getValueAt(row, 3).toString();
 
     javax.swing.JOptionPane.showMessageDialog(
         this,
-        "Selected Item:\n" +
-        "Item ID: " + itemID + "\n" +
-        "Item Name: " + itemName + "\n" +
-        "Category: " + category + "\n" +
-        "Price: ₱" + price
+        "Selected Item Successfully!\n\n"
+        + "Item ID: " + selectedItemID + "\n"
+        + "Item Name: " + selectedItemName + "\n"
+        + "Category: " + selectedItemCategory + "\n"
+        + "Price: ₱" + selectedItemPrice
     );
-    }
-
-    
+}
     private javax.swing.table.DefaultTableModel model;
     private javax.swing.table.TableRowSorter<javax.swing.table.DefaultTableModel> sorter;
 
@@ -71,21 +74,44 @@ public class SearchOrder extends javax.swing.JFrame {
             return false;
         }
     };
+// MEALS
+model.addRow(new Object[]{"001", "Rice", "Meals", 10.00});
+model.addRow(new Object[]{"002", "Fried Chicken", "Meals", 35.00});
+model.addRow(new Object[]{"003", "Hotdog", "Meals", 15.00});
+model.addRow(new Object[]{"004", "Barbeque", "Meals", 20.00});
+model.addRow(new Object[]{"005", "Fried Egg", "Meals", 15.00});
+model.addRow(new Object[]{"006", "Chicken Soup", "Meals", 30.00});
+model.addRow(new Object[]{"007", "Beef Soup", "Meals", 35.00});
+model.addRow(new Object[]{"008", "Rice w/ Fried Chicken", "Meals", 45.00});
+model.addRow(new Object[]{"009", "Rice w/ Chicken Soup", "Meals", 40.00});
+// DRINKS
+model.addRow(new Object[]{"010", "Water", "Drinks", 15.00});
+model.addRow(new Object[]{"011", "Salad Juice", "Drinks", 20.00});
+model.addRow(new Object[]{"012", "Juicy Lemon", "Drinks", 20.00});
+model.addRow(new Object[]{"013", "Dutch Milk 90 mL", "Drinks", 15.00});
+model.addRow(new Object[]{"014", "Dutch Milk 100 mL", "Drinks", 18.00});
+model.addRow(new Object[]{"015", "Healthtea", "Drinks", 20.00});
+// SNACKS
+model.addRow(new Object[]{"016", "Siomai", "Snacks", 25.00});
+model.addRow(new Object[]{"017", "Turon", "Snacks", 15.00});
+model.addRow(new Object[]{"018", "Fries", "Snacks", 30.00});
+model.addRow(new Object[]{"019", "Buchi", "Snacks", 10.00});
+model.addRow(new Object[]{"020", "Impanada", "Snacks", 20.00});
+model.addRow(new Object[]{"021", "Crispy Hotdog Rolls", "Snacks", 25.00});
+// DESSERTS
+model.addRow(new Object[]{"022", "Ice Cream", "Desserts", 25.00});
+model.addRow(new Object[]{"023", "Pancakes", "Desserts", 20.00});
+model.addRow(new Object[]{"024", "Pudding", "Desserts", 20.00});
+model.addRow(new Object[]{"025", "Cupcake", "Desserts", 25.00});
 
-    // Sample canteen items
-    model.addRow(new Object[]{"001", "Chicken Meal", "Meal", 75.00});
-    model.addRow(new Object[]{"002", "French Fries", "Snack", 35.00});
-    model.addRow(new Object[]{"003", "Iced Tea", "Drink", 25.00});
-    model.addRow(new Object[]{"004", "Burger", "Snack", 50.00});
-    model.addRow(new Object[]{"005", "Pancit", "Meal", 60.00});
-    model.addRow(new Object[]{"006", "Bottled Water", "Drink", 20.00});
-
+    // Connect the data model to JTable
     jTable1.setModel(model);
 
+    // Initialize the search sorter
     sorter = new javax.swing.table.TableRowSorter<>(model);
     jTable1.setRowSorter(sorter);
+
     }
-    
     
     private void searchItems() {
 
@@ -127,7 +153,6 @@ public class SearchOrder extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jScrollBar1 = new javax.swing.JScrollBar();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -157,13 +182,13 @@ public class SearchOrder extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 600, 400));
-        getContentPane().add(jScrollBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, 20, 400));
 
         jButton2.setText("Select Item");
         jButton2.addActionListener(this::jButton2ActionPerformed);
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 120, 140, 40));
 
         jButton3.setText("Return");
+        jButton3.addActionListener(this::jButton3ActionPerformed);
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 530, -1, -1));
 
         jButton4.setText("Order");
@@ -181,6 +206,13 @@ public class SearchOrder extends javax.swing.JFrame {
     OrderJFrame orderJFrame = new OrderJFrame();
         orderJFrame.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        MenuJFrame mainMenu = new MenuJFrame();
+        mainMenu.setVisible(true);
+
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -213,7 +245,6 @@ public class SearchOrder extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
