@@ -13,6 +13,34 @@ public class ItemsOrder extends javax.swing.JFrame {
     /**
      * Creates new form ItemsOrder
      */
+    // Available stock for each item
+private int[] itemStock = {
+    50, // Rice
+    30, // Fried Chicken
+    40, // Hotdog
+    35, // Barbeque
+    25, // Fried Egg
+    20, // Chicken Soup
+    20, // Beef Soup
+    15, // Rice w/ Fried Chicken
+    15, // Rice w/ Chicken Soup
+    50, // Water
+    30, // Salad Juice
+    30, // Juicy Lemon
+    40, // Dutch Milk 90 mL
+    40, // Dutch Milk 100 mL
+    25, // Healthtea
+    30, // Siomai
+    35, // Turon
+    30, // Fries
+    40, // Buchi
+    25, // Impanada
+    20, // Crispy Hotdog Rolls
+    30, // Ice Cream
+    25, // Pancakes
+    25, // Pudding
+    30  // Cupcake
+};
     public ItemsOrder() {
         initComponents();
          DefaultTableModel model = new DefaultTableModel(
@@ -115,7 +143,7 @@ public class ItemsOrder extends javax.swing.JFrame {
         jButton2.addActionListener(this::jButton2ActionPerformed);
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 40, 90, 130));
 
-        jButton3.setText("Price View");
+        jButton3.setText("Stock View");
         jButton3.addActionListener(this::jButton3ActionPerformed);
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 180, 90, 150));
 
@@ -157,7 +185,35 @@ public class ItemsOrder extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+    int selectedRow = jTable1.getSelectedRow();
+
+    if (selectedRow == -1) {
+        JOptionPane.showMessageDialog(
+            this,
+            "Please select an item first!",
+            "No Item Selected",
+            JOptionPane.WARNING_MESSAGE
+        );
+        return;
+    }
+
+    String itemName = jTable1.getValueAt(selectedRow, 1).toString();
+
+    double price = Double.parseDouble(
+        jTable1.getValueAt(selectedRow, 3).toString()
+    );
+
+    int remainingStock = itemStock[selectedRow];
+
+    JOptionPane.showMessageDialog(
+        this,
+        "ITEM INFORMATION\n\n"
+        + "Item Name: " + itemName + "\n"
+        + "Price: ₱" + String.format("%.2f", price) + "\n"
+        + "Available Items: " + remainingStock + " pieces",
+        "Price and Stock View",
+        JOptionPane.INFORMATION_MESSAGE
+    );
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
