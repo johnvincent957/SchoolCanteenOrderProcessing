@@ -46,6 +46,7 @@ private String selectedItemCategory = "";
     }
 
     int row = jTable1.convertRowIndexToModel(selectedRow);
+    
 
     selectedItemID = model.getValueAt(row, 0).toString();
     selectedItemName = model.getValueAt(row, 1).toString();
