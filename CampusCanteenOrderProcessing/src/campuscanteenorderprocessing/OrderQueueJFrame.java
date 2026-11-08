@@ -9,6 +9,7 @@ package campuscanteenorderprocessing;
  *
  * @author admin
  */
+
 public class OrderQueueJFrame extends javax.swing.JFrame {
 
     /**
@@ -29,8 +30,12 @@ public class OrderQueueJFrame extends javax.swing.JFrame {
     initComponents();
     jButton5.setFont(new java.awt.Font("Segoe UI", 0, 14));
     jButton5.setText("Serve Next Order");
-    jButton5.addActionListener(new java.awt.event.ActionListener() {
-    public void actionPerformed(java.awt.event.ActionEvent evt) {
+    jButton5.addActionListener(new java.awt.event.ActionListener() 
+    
+    {
+    
+        
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
         jButton5ActionPerformed(evt);
     }
     });
@@ -139,8 +144,8 @@ public class OrderQueueJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        MenuJFrame mainMenu = new MenuJFrame();
-        mainMenu.setVisible(true);
+        OrderJFrame orderJFrame = new OrderJFrame();
+        orderJFrame.setVisible(true);
 
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -192,7 +197,83 @@ public class OrderQueueJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+        javax.swing.table.DefaultTableModel model =
+        (javax.swing.table.DefaultTableModel) jTable1.getModel();
+
+    // Check if there are orders
+    if (model.getRowCount() == 0) {
+        javax.swing.JOptionPane.showMessageDialog(
+            this,
+            "There are no pending orders to serve.",
+            "No Orders",
+            javax.swing.JOptionPane.INFORMATION_MESSAGE
+        );
+        return;
+    }
+
+    // Find the first pending order
+    int nextOrder = -1;
+
+    for (int i = 0; i < model.getRowCount(); i++) {
+
+        String status = model.getValueAt(i, 4).toString();
+
+        if (status.equalsIgnoreCase("Pending")) {
+            nextOrder = i;
+            break;
+        }
+    }
+
+    // Check if all orders are already served
+    if (nextOrder == -1) {
+        javax.swing.JOptionPane.showMessageDialog(
+            this,
+            "All orders have already been served!",
+            "No Pending Orders",
+            javax.swing.JOptionPane.INFORMATION_MESSAGE
+        );
+        return;
+    }
+
+    // Get order information
+    String orderNumber =
+        model.getValueAt(nextOrder, 0).toString();
+
+    String customer =
+        model.getValueAt(nextOrder, 1).toString();
+
+    String items =
+        model.getValueAt(nextOrder, 2).toString();
+
+    String price =
+        model.getValueAt(nextOrder, 3).toString();
+
+    // Display order confirmation
+    int confirm = javax.swing.JOptionPane.showConfirmDialog(
+        this,
+        "SERVE NEXT ORDER?\n\n" +
+        "Order No.: " + orderNumber + "\n" +
+        "Customer: " + customer + "\n" +
+        "Items: " + items + "\n" +
+        "Total Price: " + price + "\n\n" +
+        "Do you want to serve this order?",
+        "Confirm Order",
+        javax.swing.JOptionPane.YES_NO_OPTION
+    );
+
+    // Update order status
+    if (confirm == javax.swing.JOptionPane.YES_OPTION) {
+
+        model.setValueAt("Served", nextOrder, 4);
+
+        javax.swing.JOptionPane.showMessageDialog(
+            this,
+            "Order No. " + orderNumber +
+            " has been successfully served!",
+            "Order Served",
+            javax.swing.JOptionPane.INFORMATION_MESSAGE
+        );
+    }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
