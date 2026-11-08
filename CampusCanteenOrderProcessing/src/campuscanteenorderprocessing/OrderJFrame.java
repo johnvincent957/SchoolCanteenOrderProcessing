@@ -22,7 +22,10 @@ public class OrderJFrame extends javax.swing.JFrame {
     initComponents();
     // Set up table columns
     DefaultTableModel model = new DefaultTableModel(
-        new Object[][]{},
+            
+            
+            new Object[][]{},
+            
         new String[]{
             "Order Number",
             "Customer Name",
