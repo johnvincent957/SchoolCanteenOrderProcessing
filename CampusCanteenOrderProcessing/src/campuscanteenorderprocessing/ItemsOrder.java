@@ -4,10 +4,8 @@
  */
 package campuscanteenorderprocessing;
 
-/**
- *
- * @author JV gwapo
- */
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 public class ItemsOrder extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ItemsOrder.class.getName());
@@ -17,6 +15,50 @@ public class ItemsOrder extends javax.swing.JFrame {
      */
     public ItemsOrder() {
         initComponents();
+         DefaultTableModel model = new DefaultTableModel(
+        new Object[][]{},
+        new String[]{
+            "Item Number",
+            "Item Name",
+            "Category",
+            "Price"
+        }
+    );
+
+    jTable1.setModel(model);
+
+    // MEALS
+    model.addRow(new Object[]{"001", "Rice", "Meals", 10.00});
+    model.addRow(new Object[]{"002", "Fried Chicken", "Meals", 35.00});
+    model.addRow(new Object[]{"003", "Hotdog", "Meals", 15.00});
+    model.addRow(new Object[]{"004", "Barbeque", "Meals", 20.00});
+    model.addRow(new Object[]{"005", "Fried Egg", "Meals", 15.00});
+    model.addRow(new Object[]{"006", "Chicken Soup", "Meals", 30.00});
+    model.addRow(new Object[]{"007", "Beef Soup", "Meals", 35.00});
+    model.addRow(new Object[]{"008", "Rice w/ Fried Chicken", "Meals", 45.00});
+    model.addRow(new Object[]{"009", "Rice w/ Chicken Soup", "Meals", 40.00});
+
+    // DRINKS
+    model.addRow(new Object[]{"010", "Water", "Drinks", 15.00});
+    model.addRow(new Object[]{"011", "Salad Juice", "Drinks", 20.00});
+    model.addRow(new Object[]{"012", "Juicy Lemon", "Drinks", 20.00});
+    model.addRow(new Object[]{"013", "Dutch Milk 90 mL", "Drinks", 15.00});
+    model.addRow(new Object[]{"014", "Dutch Milk 100 mL", "Drinks", 18.00});
+    model.addRow(new Object[]{"015", "Healthtea", "Drinks", 20.00});
+
+    // SNACKS
+    model.addRow(new Object[]{"016", "Siomai", "Snacks", 25.00});
+    model.addRow(new Object[]{"017", "Turon", "Snacks", 15.00});
+    model.addRow(new Object[]{"018", "Fries", "Snacks", 30.00});
+    model.addRow(new Object[]{"019", "Buchi", "Snacks", 10.00});
+    model.addRow(new Object[]{"020", "Impanada", "Snacks", 20.00});
+    model.addRow(new Object[]{"021", "Crispy Hotdog Rolls", "Snacks", 25.00});
+
+    // DESSERTS
+    model.addRow(new Object[]{"022", "Ice Cream", "Desserts", 25.00});
+    model.addRow(new Object[]{"023", "Pancakes", "Desserts", 20.00});
+    model.addRow(new Object[]{"024", "Pudding", "Desserts", 20.00});
+    model.addRow(new Object[]{"025", "Cupcake", "Desserts", 25.00});    
     }
 
     /**
@@ -89,7 +131,26 @@ public class ItemsOrder extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    int selectedRow = jTable1.getSelectedRow();
+
+    if (selectedRow == -1) {
+        JOptionPane.showMessageDialog(
+            this,
+            "Please select an item first!",
+            "No Item Selected",
+            JOptionPane.WARNING_MESSAGE
+        );
+        return;
+    }
+
+    String itemName = jTable1.getValueAt(selectedRow, 1).toString();
+
+    String price = jTable1.getValueAt(selectedRow, 3).toString();
+
     OrderJFrame order = new OrderJFrame();
+
+    order.setOrderDetails(itemName, price);
+
     order.setVisible(true);
 
     this.dispose();
@@ -107,10 +168,11 @@ public class ItemsOrder extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        OrderJFrame orderJFrame = new OrderJFrame();
-        orderJFrame.setVisible(true);
+        OrderJFrame order = new OrderJFrame();
 
-        this.dispose();
+    order.setVisible(true);
+
+    this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**

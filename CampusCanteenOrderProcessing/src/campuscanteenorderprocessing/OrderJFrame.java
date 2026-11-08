@@ -114,10 +114,8 @@ public class OrderJFrame extends javax.swing.JFrame {
     selectedItemName = itemName;
     selectedItemPrice = price;
 
-    // Display selected item and price
-    jTextField2.setText(itemName + " - ₱" + price);
+    jTextField2.setText(itemName);
 
-    // Update order preview
     updateOrderPreview();
         
 }
@@ -232,6 +230,7 @@ public class OrderJFrame extends javax.swing.JFrame {
     String orderNumber = jTextField5.getText().trim();
     String orderItem = jTextField2.getText().trim();
 
+    // Check if all information is complete
     if (customerName.isEmpty()
             || orderNumber.isEmpty()
             || orderItem.isEmpty()) {
@@ -246,6 +245,20 @@ public class OrderJFrame extends javax.swing.JFrame {
         return;
     }
 
+    // Check if price is available
+    if (selectedItemPrice == null || selectedItemPrice.trim().isEmpty()) {
+
+        JOptionPane.showMessageDialog(
+            this,
+            "Please select an item with a valid price!",
+            "Missing Price",
+            JOptionPane.WARNING_MESSAGE
+        );
+
+        return;
+    }
+
+    // Create order queue
     OrderQueueJFrame queue = new OrderQueueJFrame();
 
     queue.addOrder(
@@ -254,16 +267,21 @@ public class OrderJFrame extends javax.swing.JFrame {
         orderItem
     );
 
+    // Display confirmation message
     JOptionPane.showMessageDialog(
         this,
         "Order Successfully Submitted!\n\n"
         + "Order Number: " + orderNumber + "\n"
         + "Customer Name: " + customerName + "\n"
         + "Order Item: " + orderItem + "\n"
-        + "Price: ₱" + selectedItemPrice
+        + "Price: ₱" + String.format("%.2f",
+            Double.parseDouble(selectedItemPrice)),
+        "Order Confirmation",
+        JOptionPane.INFORMATION_MESSAGE
     );
 
     queue.setVisible(true);
+
     this.dispose();
     }//GEN-LAST:event_jTextField2ActionPerformed
 
@@ -301,6 +319,18 @@ public class OrderJFrame extends javax.swing.JFrame {
         return;
     }
 
+    if (selectedItemPrice == null || selectedItemPrice.trim().isEmpty()) {
+
+        JOptionPane.showMessageDialog(
+            this,
+            "Price is missing! Please select an item again.",
+            "Missing Price",
+            JOptionPane.WARNING_MESSAGE
+        );
+
+        return;
+    }
+
     OrderQueueJFrame queue = new OrderQueueJFrame();
 
     queue.addOrder(
@@ -315,7 +345,9 @@ public class OrderJFrame extends javax.swing.JFrame {
         + "Order Number: " + orderNumber + "\n"
         + "Customer Name: " + customerName + "\n"
         + "Order Item: " + orderItem + "\n"
-        + "Price: ₱" + selectedItemPrice
+        + "Price: ₱" + selectedItemPrice,
+        "Order Confirmation",
+        JOptionPane.INFORMATION_MESSAGE
     );
 
     queue.setVisible(true);
