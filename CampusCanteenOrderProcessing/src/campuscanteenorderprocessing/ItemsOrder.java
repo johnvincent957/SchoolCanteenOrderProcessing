@@ -15,7 +15,7 @@ public class ItemsOrder extends javax.swing.JFrame {
      */
     // Available stock for each item
 private int[] itemStock = {
-    50, // Rice
+    50, // Rice 
     30, // Fried Chicken
     40, // Hotdog
     35, // Barbeque
@@ -80,6 +80,7 @@ private int[] itemStock = {
     model.addRow(new Object[]{"018", "Fries", "Snacks", 30.00});
     model.addRow(new Object[]{"019", "Buchi", "Snacks", 10.00});
     model.addRow(new Object[]{"020", "Impanada", "Snacks", 20.00});
+    
     model.addRow(new Object[]{"021", "Crispy Hotdog Rolls", "Snacks", 25.00});
 
     // DESSERTS
@@ -188,8 +189,9 @@ private int[] itemStock = {
             this,
             "Please select an item first!",
             "No Item Selected",
-            JOptionPane.WARNING_MESSAGE
+            JOptionPane.WARNING_MESSAGE //Message
         );
+        
         return;
     }
 
