@@ -1,13 +1,27 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package campuscanteenorderprocessing;
 
-/**
- *
- * @author JV gwapo
- */
 public class Order1 {
-    
+
+    private int orderNumber;
+    private String itemName;
+    private double totalPrice;
+
+    public Order1(int orderNumber, String itemName, double totalPrice) {
+        this.orderNumber = orderNumber;
+        this.itemName = itemName;
+        this.totalPrice = totalPrice;
+    }
+
+    public int getOrderNumber() {
+        return orderNumber;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
 }

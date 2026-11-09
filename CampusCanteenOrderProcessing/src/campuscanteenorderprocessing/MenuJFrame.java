@@ -93,7 +93,7 @@ public class MenuJFrame extends javax.swing.JFrame {
 
         jButton3.setBackground(new java.awt.Color(0, 204, 0));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(0, 102, 0));
+        jButton3.setForeground(new java.awt.Color(0, 51, 0));
         jButton3.setText("ADD CUSTOMER ORDER");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -12,8 +12,8 @@ public class ordequeue {
     }
 
     // Add a new order
-    public void addorder(order order) {
-        orders.add(order);
+    public void addorder(order newOrder) {
+        orders.add(newOrder);
     }
 
     // Serve the next order
@@ -29,10 +29,10 @@ public class ordequeue {
     // Search for an order
     public order searchOrder(int orderNumber) {
 
-        for (order order : orders) {
+        for (order currentOrder : orders) {
 
-            if (order.getOrderNumber() == orderNumber) {
-                return order;
+            if (currentOrder.getOrderNumber() == orderNumber) {
+                return currentOrder;
             }
         }
 
