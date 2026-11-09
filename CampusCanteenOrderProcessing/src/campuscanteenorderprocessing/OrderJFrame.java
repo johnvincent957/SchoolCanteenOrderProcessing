@@ -20,6 +20,7 @@ public class OrderJFrame extends javax.swing.JFrame {
      */
     public OrderJFrame() {
     initComponents();
+    setLocationRelativeTo(null);
     // Set up table columns
     DefaultTableModel model = new DefaultTableModel(
             

@@ -24,6 +24,8 @@ class Order {
 }
 
 public class CampusCanteenOrderProcessing {
+   
+
 
     static Queue<Order> pendingOrders = new LinkedList<>();
     static Scanner input = new Scanner(System.in);

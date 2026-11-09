@@ -22,6 +22,7 @@ private String selectedItemCategory = "";
     
     public SearchOrder() {
     initComponents();
+    setLocationRelativeTo(null);
 
     setupTable();
 

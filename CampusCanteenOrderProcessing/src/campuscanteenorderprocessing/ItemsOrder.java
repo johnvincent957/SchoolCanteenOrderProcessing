@@ -8,7 +8,9 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 public class ItemsOrder extends javax.swing.JFrame {
     
+    
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ItemsOrder.class.getName());
+    
 
     /**
      * Creates new form ItemsOrder
@@ -43,6 +45,7 @@ private int[] itemStock = {
 };
     public ItemsOrder() {
         initComponents();
+        setLocationRelativeTo(null);
          DefaultTableModel model = new DefaultTableModel(
         new Object[][]{},
         new String[]{

@@ -16,7 +16,11 @@ public class MenuJFrame extends javax.swing.JFrame {
      */
     public MenuJFrame() {
         initComponents();
+       
         setLocationRelativeTo(null);
+        
+        
+        
     }
 
     /**

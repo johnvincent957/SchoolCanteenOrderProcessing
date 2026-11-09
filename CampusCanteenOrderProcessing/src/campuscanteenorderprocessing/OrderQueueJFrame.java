@@ -28,6 +28,7 @@ public class OrderQueueJFrame extends javax.swing.JFrame {
     );
     public OrderQueueJFrame() {
     initComponents();
+    setLocationRelativeTo(null);
     jButton5.setFont(new java.awt.Font("Segoe UI", 0, 14));
     jButton5.setText("Serve Next Order");
     jButton5.addActionListener(new java.awt.event.ActionListener() 
