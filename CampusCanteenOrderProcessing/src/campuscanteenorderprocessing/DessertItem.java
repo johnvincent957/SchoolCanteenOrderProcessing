@@ -1,13 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package campuscanteenorderprocessing;
 
-/**
- *
- * @author JV gwapo
- */
-public class DessertItem {
-    
+public class DessertItem extends CanteenItem {
+
+    public DessertItem(String itemID, String itemName, double price) {
+        super(itemID, itemName, "Desserts", price);
+    }
 }

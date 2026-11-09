@@ -9,7 +9,8 @@ package campuscanteenorderprocessing;
  * @author JV gwapo
  */
 public class SearchOrder extends javax.swing.JFrame {
-    private String selectedItemName = "";
+private CanteenItemList itemList = new CanteenItemList();
+private String selectedItemName = "";
 private String selectedItemPrice = "";
 private String selectedItemID = "";
 private String selectedItemCategory = "";
@@ -66,7 +67,8 @@ private String selectedItemCategory = "";
     private javax.swing.table.DefaultTableModel model;
     private javax.swing.table.TableRowSorter<javax.swing.table.DefaultTableModel> sorter;
 
-    private void setupTable() {
+    
+private void setupTable() {
 
     model = new javax.swing.table.DefaultTableModel(
         new Object[]{"Item ID", "Item Name", "Category", "Price"}, 0
@@ -76,44 +78,49 @@ private String selectedItemCategory = "";
             return false;
         }
     };
-// MEALS
-model.addRow(new Object[]{"001", "Rice", "Meals", 10.00});
-model.addRow(new Object[]{"002", "Fried Chicken", "Meals", 35.00});
-model.addRow(new Object[]{"003", "Hotdog", "Meals", 15.00});
-model.addRow(new Object[]{"004", "Barbeque", "Meals", 20.00});
-model.addRow(new Object[]{"005", "Fried Egg", "Meals", 15.00});
-model.addRow(new Object[]{"006", "Chicken Soup", "Meals", 30.00});
-model.addRow(new Object[]{"007", "Beef Soup", "Meals", 35.00});
-model.addRow(new Object[]{"008", "Rice w/ Fried Chicken", "Meals", 45.00});
-model.addRow(new Object[]{"009", "Rice w/ Chicken Soup", "Meals", 40.00});
-// DRINKS
-model.addRow(new Object[]{"010", "Water", "Drinks", 15.00});
-model.addRow(new Object[]{"011", "Salad Juice", "Drinks", 20.00});
-model.addRow(new Object[]{"012", "Juicy Lemon", "Drinks", 20.00});
-model.addRow(new Object[]{"013", "Dutch Milk 90 mL", "Drinks", 15.00});
-model.addRow(new Object[]{"014", "Dutch Milk 100 mL", "Drinks", 18.00});
-model.addRow(new Object[]{"015", "Healthtea", "Drinks", 20.00});
-// SNACKS
-model.addRow(new Object[]{"016", "Siomai", "Snacks", 25.00});
-model.addRow(new Object[]{"017", "Turon", "Snacks", 15.00});
-model.addRow(new Object[]{"018", "Fries", "Snacks", 30.00});
-model.addRow(new Object[]{"019", "Buchi", "Snacks", 10.00});
-model.addRow(new Object[]{"020", "Impanada", "Snacks", 20.00});
-model.addRow(new Object[]{"021", "Crispy Hotdog Rolls", "Snacks", 25.00});
-// DESSERTS
-model.addRow(new Object[]{"022", "Ice Cream", "Desserts", 25.00});
-model.addRow(new Object[]{"023", "Pancakes", "Desserts", 20.00});
-model.addRow(new Object[]{"024", "Pudding", "Desserts", 20.00});
-model.addRow(new Object[]{"025", "Cupcake", "Desserts", 25.00});
 
-    // Connect the data model to JTable
+    // MEALS
+    itemList.insert(new MealItem("001", "Rice", 10.00));
+    itemList.insert(new MealItem("002", "Fried Chicken", 35.00));
+    itemList.insert(new MealItem("003", "Hotdog", 15.00));
+    itemList.insert(new MealItem("004", "Barbeque", 20.00));
+    itemList.insert(new MealItem("005", "Fried Egg", 15.00));
+    itemList.insert(new MealItem("006", "Chicken Soup", 30.00));
+    itemList.insert(new MealItem("007", "Beef Soup", 35.00));
+    itemList.insert(new MealItem("008", "Rice w/ Fried Chicken", 45.00));
+    itemList.insert(new MealItem("009", "Rice w/ Chicken Soup", 40.00));
+
+    // DRINKS
+    itemList.insert(new DrinkItem("010", "Water", 15.00));
+    itemList.insert(new DrinkItem("011", "Salad Juice", 20.00));
+    itemList.insert(new DrinkItem("012", "Juicy Lemon", 20.00));
+    itemList.insert(new DrinkItem("013", "Dutch Milk 90 mL", 15.00));
+    itemList.insert(new DrinkItem("014", "Dutch Milk 100 mL", 18.00));
+    itemList.insert(new DrinkItem("015", "Healthtea", 20.00));
+
+    // SNACKS
+    itemList.insert(new SnackItem("016", "Siomai", 25.00));
+    itemList.insert(new SnackItem("017", "Turon", 15.00));
+    itemList.insert(new SnackItem("018", "Fries", 30.00));
+    itemList.insert(new SnackItem("019", "Buchi", 10.00));
+    itemList.insert(new SnackItem("020", "Impanada", 20.00));
+    itemList.insert(new SnackItem("021", "Crispy Hotdog Rolls", 25.00));
+
+    // DESSERTS
+    itemList.insert(new DessertItem("022", "Ice Cream", 25.00));
+    itemList.insert(new DessertItem("023", "Pancakes", 20.00));
+    itemList.insert(new DessertItem("024", "Pudding", 20.00));
+    itemList.insert(new DessertItem("025", "Cupcake", 25.00));
+
+    // Display linked-list records in JTable
+    itemList.loadIntoTable(model);
+
     jTable1.setModel(model);
 
-    // Initialize the search sorter
     sorter = new javax.swing.table.TableRowSorter<>(model);
     jTable1.setRowSorter(sorter);
+}
 
-    }
     
     private void searchItems() {
         

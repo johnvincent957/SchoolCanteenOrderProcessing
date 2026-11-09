@@ -1,13 +1,13 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package campuscanteenorderprocessing;
 
-/**
- *
- * @author JV gwapo
- */
 public class ItemNode {
-    
+
+    CanteenItem data;
+    ItemNode next;
+
+    public ItemNode(CanteenItem data) {
+        this.data = data;
+        this.next = null;
+    }
 }
