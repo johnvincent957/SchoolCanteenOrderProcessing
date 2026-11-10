@@ -4,6 +4,8 @@
  */
 package campuscanteenorderprocessing;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author JV gwapo
@@ -162,6 +164,7 @@ private void setupTable() {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jToggleButton1 = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -201,6 +204,10 @@ private void setupTable() {
         jButton4.addActionListener(this::jButton4ActionPerformed);
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 530, 140, -1));
 
+        jToggleButton1.setText("Order Directly");
+        jToggleButton1.addActionListener(this::jToggleButton1ActionPerformed);
+        getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 400, 140, 110));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -219,6 +226,27 @@ private void setupTable() {
 
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        int selectedRow = jTable1.getSelectedRow();
+
+    if (selectedRow == -1) {
+        JOptionPane.showMessageDialog(
+            this,
+            "Please select an item first!",
+            "No Item Selected",
+            JOptionPane.WARNING_MESSAGE
+        );
+        return;
+    }
+
+    String itemName = jTable1.getValueAt(selectedRow, 1).toString();
+    String price = jTable1.getValueAt(selectedRow, 3).toString();
+    OrderJFrame order = new OrderJFrame();
+    order.setOrderDetails(itemName, price);
+    order.setVisible(true);
+    this.dispose();
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -254,5 +282,6 @@ private void setupTable() {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }
