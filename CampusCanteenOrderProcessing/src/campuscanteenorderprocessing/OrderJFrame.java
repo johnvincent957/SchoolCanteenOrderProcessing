@@ -23,18 +23,22 @@ public class OrderJFrame extends javax.swing.JFrame {
     setLocationRelativeTo(null);
     // Set up table columns
     DefaultTableModel model = new DefaultTableModel(
-            
-            
-            new Object[][]{},
-            
-        new String[]{
-            "Order Number",
-            "Customer Name",
-            "Order Item",
-            "Status"
-        }
-    );
-    jTable1.setModel(model);
+    new Object[][]{},
+    new String[]{
+        "Order Number",
+        "Customer Name",
+        "Order Item",
+        "Price",
+        "Status"
+    }
+) {
+    @Override
+    public boolean isCellEditable(int row, int column) {
+        return false;
+    }
+};
+
+jTable1.setModel(model);
 
     // Automatically update table when user types
     jTextField2.getDocument().addDocumentListener(
@@ -88,7 +92,8 @@ public class OrderJFrame extends javax.swing.JFrame {
         }
     );
 }
-    private void updateOrderPreview() {
+    
+private void updateOrderPreview() {
 
     String orderNumber = jTextField5.getText().trim();
     String customerName = jTextField3.getText().trim();
@@ -99,7 +104,6 @@ public class OrderJFrame extends javax.swing.JFrame {
 
     model.setRowCount(0);
 
-    // Display the order information
     if (!orderNumber.isEmpty()
             || !customerName.isEmpty()
             || !orderItem.isEmpty()) {
@@ -112,6 +116,7 @@ public class OrderJFrame extends javax.swing.JFrame {
         });
     }
 }
+
     public void setOrderDetails(String itemName, String price) {
 
     selectedItemName = itemName;
@@ -120,7 +125,6 @@ public class OrderJFrame extends javax.swing.JFrame {
     jTextField2.setText(itemName);
 
     updateOrderPreview();
-        
 }
 
     /**
