@@ -2,7 +2,7 @@
 package campuscanteenorderprocessing;
 
 public class ItemNode {
-
+//Singly Linked List
     CanteenItem data;
     ItemNode next;
 
