@@ -5,14 +5,53 @@
  */
 package campuscanteenorderprocessing;
 
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.JOptionPane;
 public class OrderJFrame extends javax.swing.JFrame {
     private String selectedItemName = "";
-    
     private String selectedItemPrice = "";
+    
+    private Map<String, String> itemPrices = new HashMap<>();
+
+    private void initializeMenuPrices() {
+
+        // MEALS
+        itemPrices.put("rice", "10.00");
+        itemPrices.put("fried chicken", "35.00");
+        itemPrices.put("hotdog", "15.00");
+        itemPrices.put("barbeque", "20.00");
+        itemPrices.put("fried egg", "15.00");
+        itemPrices.put("chicken soup", "30.00");
+        itemPrices.put("beef soup", "35.00");
+        itemPrices.put("rice w/ fried chicken", "45.00");
+        itemPrices.put("rice w/ chicken soup", "40.00");
+
+        // DRINKS
+        itemPrices.put("water", "15.00");
+        itemPrices.put("salad juice", "20.00");
+        itemPrices.put("juicy lemon", "20.00");
+        itemPrices.put("dutch milk 90 ml", "15.00");
+        itemPrices.put("dutch milk 100 ml", "18.00");
+        itemPrices.put("healthtea", "20.00");
+
+        // SNACKS
+        itemPrices.put("siomai", "25.00");
+        itemPrices.put("turon", "15.00");
+        itemPrices.put("fries", "30.00");
+        itemPrices.put("buchi", "10.00");
+        itemPrices.put("impanada", "20.00");
+        itemPrices.put("crispy hotdog rolls", "25.00");
+
+        // DESSERTS
+        itemPrices.put("ice cream", "25.00");
+        itemPrices.put("pancakes", "20.00");
+        itemPrices.put("pudding", "20.00");
+        itemPrices.put("cupcake", "25.00");
+    }
     
 
     /**
@@ -21,6 +60,9 @@ public class OrderJFrame extends javax.swing.JFrame {
     public OrderJFrame() {
     initComponents();
     setLocationRelativeTo(null);
+    
+    initializeMenuPrices();
+    
     // Set up table columns
     DefaultTableModel model = new DefaultTableModel(
     new Object[][]{},
@@ -28,7 +70,6 @@ public class OrderJFrame extends javax.swing.JFrame {
         "Order Number",
         "Customer Name",
         "Order Item",
-        "Price",
         "Status"
     }
 ) {
@@ -37,6 +78,7 @@ public class OrderJFrame extends javax.swing.JFrame {
         return false;
     }
 };
+    
 
 jTable1.setModel(model);
 
@@ -93,6 +135,14 @@ jTable1.setModel(model);
     );
 }
     
+    private String getItemPrice(String itemName) {
+
+    if (itemName == null) {
+        return null;
+    }
+
+    return itemPrices.get(itemName.trim().toLowerCase());
+}
 private void updateOrderPreview() {
 
     String orderNumber = jTextField5.getText().trim();
@@ -232,65 +282,7 @@ private void updateOrderPreview() {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-    
-    String customerName = jTextField3.getText().trim();
-    String orderNumber = jTextField5.getText().trim();
-    String orderItem = jTextField2.getText().trim();
-
-    // Check if all information is complete
-    if (customerName.isEmpty()
-            || orderNumber.isEmpty()
-            || orderItem.isEmpty()) {
-
-        JOptionPane.showMessageDialog(
-            this,
-            "Please complete all order information!",
-            "Incomplete Order",
-            JOptionPane.WARNING_MESSAGE
-        );
-
-        return;
-    }
-
-    // Check if price is available
-    if (selectedItemPrice == null || selectedItemPrice.trim().isEmpty()) {
-
-        JOptionPane.showMessageDialog(
-            this,
-            "Please select an item with a valid price!",
-            "Missing Price",
-            JOptionPane.WARNING_MESSAGE
-        );
-
-        return;
-    }
-
-    // Create order queue
-    OrderQueueJFrame queue = new OrderQueueJFrame();
-
-    queue.addOrder(
-    orderNumber,
-    customerName,
-    orderItem,
-    selectedItemPrice
-    );
-
-    // Display confirmation message
-    JOptionPane.showMessageDialog(
-        this,
-        "Order Successfully Submitted!\n\n"
-        + "Order Number: " + orderNumber + "\n"
-        + "Customer Name: " + customerName + "\n"
-        + "Order Item: " + orderItem + "\n"
-        + "Price: ₱" + String.format("%.2f",
-            Double.parseDouble(selectedItemPrice)),
-        "Order Confirmation",
-        JOptionPane.INFORMATION_MESSAGE
-    );
-
-    queue.setVisible(true);
-
-    this.dispose();
+    // Do nothing when Enter is pressed in the Order Item field.
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
@@ -313,6 +305,7 @@ private void updateOrderPreview() {
     String orderNumber = jTextField5.getText().trim();
     String orderItem = jTextField2.getText().trim();
 
+    // Check required information
     if (customerName.isEmpty()
             || orderNumber.isEmpty()
             || orderItem.isEmpty()) {
@@ -327,40 +320,48 @@ private void updateOrderPreview() {
         return;
     }
 
-    if (selectedItemPrice == null || selectedItemPrice.trim().isEmpty()) {
+    // Automatically retrieve item price
+    String price = getItemPrice(orderItem);
+
+    if (price == null) {
 
         JOptionPane.showMessageDialog(
             this,
-            "Price is missing! Please select an item again.",
-            "Missing Price",
+            "Item not found in the menu!\n"
+            + "Please check the item name.",
+            "Invalid Item",
             JOptionPane.WARNING_MESSAGE
         );
 
         return;
     }
 
+    // Add order to queue
     OrderQueueJFrame queue = new OrderQueueJFrame();
 
     queue.addOrder(
-    orderNumber,
-    customerName,
-    orderItem,
-    selectedItemPrice
+        orderNumber,
+        customerName,
+        orderItem,
+        price
     );
 
+    // Display order confirmation
     JOptionPane.showMessageDialog(
         this,
-        "Order Successfully Submitted!\n\n"
+        "ORDER SUCCESSFULLY SUBMITTED!\n\n"
         + "Order Number: " + orderNumber + "\n"
         + "Customer Name: " + customerName + "\n"
         + "Order Item: " + orderItem + "\n"
-        + "Price: ₱" + selectedItemPrice,
+        + "Total Price: ₱" + price,
         "Order Confirmation",
         JOptionPane.INFORMATION_MESSAGE
     );
 
     queue.setVisible(true);
+
     this.dispose();
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
