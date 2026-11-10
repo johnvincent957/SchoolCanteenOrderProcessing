@@ -1,6 +1,6 @@
 
 package campuscanteenorderprocessing;
-
+//Child Class
 public class MealItem extends CanteenItem {
 
     public MealItem(String itemID, String itemName, double price) {

@@ -1,8 +1,9 @@
 
 package campuscanteenorderprocessing;
 
-
+//Encapsulation
 public class CanteenItem {
+    //Parent Class
     private String itemID;
     private String itemName;
     private String category;

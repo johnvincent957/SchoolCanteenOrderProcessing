@@ -23,7 +23,8 @@ public class CanteenItemList {
     }
 }
     
-
+    //Singly LinkedList
+    //
     private ItemNode head;
 
     // INSERT ITEM
