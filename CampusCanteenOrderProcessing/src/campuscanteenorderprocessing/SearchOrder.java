@@ -174,9 +174,12 @@ private void setupTable() {
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 483, 61));
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 600, 40));
 
+        jButton1.setBackground(new java.awt.Color(51, 255, 0));
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton1.setText("Search");
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 70, 140, 40));
 
+        jTable1.setBackground(new java.awt.Color(255, 255, 204));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -192,6 +195,8 @@ private void setupTable() {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 600, 400));
 
+        jButton2.setBackground(new java.awt.Color(153, 255, 204));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jButton2.setText("Select Item");
         jButton2.addActionListener(this::jButton2ActionPerformed);
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 120, 140, 40));
@@ -204,6 +209,8 @@ private void setupTable() {
         jButton4.addActionListener(this::jButton4ActionPerformed);
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 530, 140, -1));
 
+        jToggleButton1.setBackground(new java.awt.Color(255, 204, 204));
+        jToggleButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jToggleButton1.setText("Order Directly");
         jToggleButton1.addActionListener(this::jToggleButton1ActionPerformed);
         getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 400, 140, 110));

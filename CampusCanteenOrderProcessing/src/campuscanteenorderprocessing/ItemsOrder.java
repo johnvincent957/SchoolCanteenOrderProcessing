@@ -108,6 +108,7 @@ private int[] itemStock = {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -116,6 +117,7 @@ private int[] itemStock = {
         jLabel1.setText("Canteen Items List");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 220, 30));
 
+        jTable1.setBackground(new java.awt.Color(255, 255, 204));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"Rice", "Water", "Siomai", "Ice Cream"},
@@ -142,11 +144,16 @@ private int[] itemStock = {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 590, 290));
 
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jButton2.setBackground(new java.awt.Color(0, 153, 51));
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Order");
         jButton2.addActionListener(this::jButton2ActionPerformed);
         getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 40, 90, 130));
 
+        jButton3.setBackground(new java.awt.Color(0, 51, 153));
+        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(255, 255, 255));
         jButton3.setText("Stock View");
         jButton3.addActionListener(this::jButton3ActionPerformed);
         getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 180, 90, 150));
@@ -154,6 +161,7 @@ private int[] itemStock = {
         jButton4.setText("Return to Main Menu");
         jButton4.addActionListener(this::jButton4ActionPerformed);
         getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 150, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 40, 100, 80));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -250,6 +258,7 @@ private int[] itemStock = {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
