@@ -165,6 +165,7 @@ private void setupTable() {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jToggleButton1 = new javax.swing.JToggleButton();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -214,6 +215,7 @@ private void setupTable() {
         jToggleButton1.setText("Order Directly");
         jToggleButton1.addActionListener(this::jToggleButton1ActionPerformed);
         getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 400, 140, 110));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 400, 100, 160));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -286,6 +288,7 @@ private void setupTable() {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
